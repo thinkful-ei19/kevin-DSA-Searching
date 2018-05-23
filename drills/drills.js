@@ -203,9 +203,42 @@ function main() {
   return bst;
 }
 
-function preorder() {
-
+function preorder(bst) {
+  console.log(bst.key);
+  if (bst.left) {
+    preorder(bst.left)
+  }
+  if (bst.right) {
+    preorder(bst.right);
+  }
 }
+
+function inOrder(bst) {
+  if (bst.left) {
+    inOrder(bst.left);
+  }
+  console.log(bst.key);
+  if (bst.right) {
+    inOrder(bst.right);
+  }
+}
+
+function postOrder(bst) {
+  if (bst.left) {
+    inOrder(bst.left);
+  }
+  if (bst.right) {
+    inOrder(bst.right);
+  }
+  console.log(bst.key);
+}
+
+// INVOCATIONS
+
+main();
+// preorder(bst);
+// inOrder(bst);
+postOrder(bst);
 
 
 // expected traversal outputs
