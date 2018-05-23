@@ -1,28 +1,24 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
+
 import './App.css';
+import Search from './components/Search';
+import Header from './components/Header';
 
 class App extends Component {
+
+  state = {
+    linearAnswer: 0,
+    binaryAnswer: 0,
+  }
+
   render() {
     return (
       <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title">Kevin's DSA Search UI</h1>
-        </header>
-        <p className="App-intro">
-          To get started, enter your data set to the appropriate field and click submit.
-        </p>
+        <Header />
         <h1>Linear Search</h1>
-        <form>
-          <textarea></textarea>
-          <button type="submit">Search</button>
-        </form>
+          <Search />
         <h1>Binary Search</h1>
-        <form>
-          <textarea></textarea>
-          <button type="submit">Search</button>
-        </form>
+          <Search />
       </div>
     );
   }
