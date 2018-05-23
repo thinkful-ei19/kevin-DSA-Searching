@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 
 import './App.css';
-import Search from './components/Search';
+import LinearSearch from './components/LinearSearch';
+import BinarySearch from './components/BinarySearch';
 import Header from './components/Header';
 
 class App extends Component {
@@ -11,14 +12,37 @@ class App extends Component {
     binaryAnswer: 0,
   }
 
+  linearSearch(arr, target) {
+    for (let i = 0; i < arr.length; i++) {
+      if (i = target) {
+        this.setState({
+          linearAnswer: i,
+        })
+      }
+    }
+  }
+
+  binarySearch(value) {
+    
+  }
+
+  linearUpdate(event) {
+    event.preventDefault();
+    linearSearch(event.target.value, )
+  }
+
+  binaryUpdate(event) {
+    event.preventDefault();
+  }
+
   render() {
     return (
       <div className="App">
         <Header />
-        <h1>Linear Search</h1>
-          <Search />
-        <h1>Binary Search</h1>
-          <Search />
+        <div className="search-container">
+          <LinearSearch linearUpdate={this.linearUpdate} />
+          <BinarySearch binaryUpdate={this.binaryUpdate} />
+        </div>
       </div>
     );
   }
