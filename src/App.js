@@ -26,8 +26,28 @@ class App extends Component {
       }
     }
 
-    binarySearch(value) {
+    binarySearch(value, start, end, counter = 1) {
+      start = start === undefined ? 0 : start;
+      end = end === undefined ? this.data.length : end;
+      let sortedData = this.data.sort((a, b) => a - b);
+      const index = Math.floor((start + end) / 2);
+      const item = sortedData[index];
 
+      if (start > end) {
+        return 'not found'
+      }
+
+      console.log(start, end);
+
+      if (item === value) {
+        this.setState({
+          binaryAnswer: counter,
+        })
+      } else if (item < value) {
+        return this.binarySearch(value, index + 1, end, counter + 1);
+      } else if (item > value) {
+        return this.binarySearch(value, start, index -1, counter + 1);
+      }
     }
 
     linearUpdate(e) {
@@ -54,7 +74,7 @@ class App extends Component {
             <BinarySearch 
               binaryUpdate={(e) => this.binaryUpdate(e)} 
             />
-            <h2>Steps it took to find target: {this.state.binaryrAnswer}</h2>
+            <h2>Steps it took to find target: {this.state.binaryAnswer}</h2>
           </div>
         </div>
       );
